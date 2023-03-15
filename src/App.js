@@ -1,16 +1,20 @@
 import './App.css';
+import { User } from './User';
 
 function App() {
-  const names = ["Dan", "Dill", "Jackson", "Adam", "Tom", "Terry"];
+  const users = [
+    { name: "Dan", age: 29 },
+    { name: "Dill", age: 28 },
+    { name: "Adam", age: 30 },
+  ];
 
 
    return (
     <div className="App">
-      {names.map((name, key) => {
-        return <h1 key={key}> {name} </h1>;
+      {users.map((user, key) => {
+        return <User name={user.name} age={user.age}/>
       })}
     </div>
    );
-}
-
+    }
   export default App;
