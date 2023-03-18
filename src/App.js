@@ -4,15 +4,19 @@ import { Planet } from './Planet';
 import { useState } from 'react';
 
 function App() {
-  const [age, setAge] = useState(0);
 
-  const increaseAge = () => {
-    setAge(age + 1);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
   };
 
-  return <div className="App">
-    {age}
-    <button onClick={increaseAge}> Increase Age</button>
-  </div>
+  return (
+    <div className="App">
+      <input type="text" onChange={handleInputChange}/>
+      {inputValue}
+    </div>
+  )
+
 }
   export default App;
