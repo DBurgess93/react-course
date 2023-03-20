@@ -1,21 +1,10 @@
 import './App.css';
 // import { User } from './User';
-import { Planet } from './Planet';
-import { useState } from 'react';
+// import { useState } from 'react';
+import { useCounter } from './counter';
 
 function App() {
-
-  const [count, setCount] = useState(0);
-
-  const increase = () => {
-    setCount(count + 1)
-  };
-  const decrease = () => {
-    setCount(count - 1)
-  };
-  const setToZero = () => {
-    setCount(0)
-  };
+  const { count, increase, decrease, setToZero } = useCounter();
 
   return (
     <div className="App">
@@ -25,7 +14,7 @@ function App() {
 
       {count}
     </div>
-  )
-
+  );
 }
-  export default App;
+
+export default App;
