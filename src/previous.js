@@ -78,3 +78,18 @@
 //     {age}
 //     <button onClick={increaseAge}> Increase Age</button>
 //   </div>
+
+// const [showText, setShowText] = useState(true);
+
+//   return (
+//     <div className="App">
+//       <button
+//         onClick={() => {
+//           setShowText(!showText)
+//         }}
+//       >
+//         Show/Hide
+//       </button>
+//       {showText && <h1> Here's your text, enjoy! </h1>}
+//     </div>
+//   )
