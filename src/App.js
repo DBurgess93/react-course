@@ -5,18 +5,34 @@ import { useState } from 'react';
 
 function App() {
 
-  const [textColor, setTextColor] = useState("black");
+  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
       <button
         onClick={() => {
-          setTextColor(textColor === "black" ? "red" : "black");
+          setCount(count + 1);
         }}
       >
-        Show/Hide
+        Increase
       </button>
-      <h1 style={{color: textColor}}> Here's your text, enjoy! </h1>
+      <button
+        onClick={() => {
+          setCount(count - 1);
+        }}
+      >
+        Decrease
+      </button>
+      <button
+        onClick={() => {
+          setCount(0);
+          console.log(count)
+        }}
+      >
+        Set to Zero
+      </button>
+
+      {count}
     </div>
   )
 
