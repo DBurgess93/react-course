@@ -1,18 +1,33 @@
 import './App.css';
 // import { User } from './User';
 // import { useState } from 'react';
-import { useCounter } from './counter';
+// import { useCounter } from './counter';
+import { useState } from "react";
 
 function App() {
-  const { count, increase, decrease, setToZero } = useCounter();
+  const [todoList, setTodoList] = useState([]);
+  const [newTask, setNewTask] = useState("");
+
+  const handleChange = (event) => {
+    setNewTask(event.target.value);
+  }
+
+  const addTask = () => {
+    const newTodoList = [...todoList, newTask];
+    setTodoList(newTodoList);
+  };
 
   return (
     <div className="App">
-      <button onClick={increase}>Increase</button>
-      <button onClick={decrease}>Decrease</button>
-      <button onClick={setToZero}>Set to Zero</button>
-
-      {count}
+      <div className="addTask">
+        <input onChange={handleChange}/>
+        <button onClick={addTask}>Add Task</button>
+      </div>
+      <div className="list">
+        {todoList.map((task) => {
+          return <h1>{task}</h1>
+        })}
+      </div>
     </div>
   );
 }
