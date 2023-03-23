@@ -7,15 +7,28 @@ import { useState } from "react";
 function App() {
   const [todoList, setTodoList] = useState([]);
   const [newTask, setNewTask] = useState("");
-
   const handleChange = (event) => {
     setNewTask(event.target.value);
   }
 
   const addTask = () => {
-    const newTodoList = [...todoList, newTask];
-    setTodoList(newTodoList);
+    setTodoList([...todoList, newTask]);
   };
+
+  const deleteTask = (taskName) => {
+    setTodoList(todoList.filter(((task) =>  task !== taskName)))
+  };
+  // <<<<<< Long way >>>>>>
+  // const deleteTask = (taskName) => {
+  //   const newTodoList = todoList.filter((task) => {
+  //     if (task === taskName) {
+  //       return false;
+  //     } else {
+  //       return true;
+  //     }
+  //   });
+  //   setTodoList(newTodoList)
+  // };
 
   return (
     <div className="App">
@@ -25,7 +38,12 @@ function App() {
       </div>
       <div className="list">
         {todoList.map((task) => {
-          return <h1>{task}</h1>
+          return (
+            <div>
+              <h1>{task}</h1>
+              <button onClick={() => deleteTask(task)}> X </button>
+            </div>
+          );
         })}
       </div>
     </div>
