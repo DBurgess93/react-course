@@ -6,6 +6,10 @@ export const Text = () => {
 
   useEffect(() => {
     console.log("COMPONENT MOUNTED");
+
+    return () => {
+      console.log("COMPONET UNMOUNTED")
+    }
   }, []);
 
   return (
