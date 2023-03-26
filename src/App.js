@@ -1,7 +1,7 @@
 import './App.css';
 import Axios from "axios";
+import { useEffect, useState } from 'react';
 // import { User } from './User';
-// import { useState } from 'react';
 // import { useCounter } from './counter';
 // import { useState } from "react";
 // import { Task } from "./Task";
@@ -10,15 +10,21 @@ import Axios from "axios";
 // import ToggleTextApp from "./ToggleTextApp"
 
 function App() {
-  Axios.get("https://catfact.ninja/fact").then((res) => {
-    console.log(res.data);
-  });
+  const [catFact, setCatFact] = useState("");
+
+  useEffect(() => {
+    Axios.get("https://catfact.ninja/fact").then((res) => {
+      setCatFact(res.data.fact);
+    });
+  }, []);
+
   return (
     <div className="App">
       <button> Generate Cat fact</button>
-      <p>  </p>
+      <p> {catFact} </p>
     </div>
   )
 }
+
 
 export default App;
