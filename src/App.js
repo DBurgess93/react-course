@@ -10,25 +10,24 @@ import { useEffect, useState } from 'react';
 // import ToggleTextApp from "./ToggleTextApp"
 
 function App() {
-  const [catFact, setCatFact] = useState("");
-
-  const fetchCatFact = () => {
-    Axios.get("https://catfact.ninja/fact").then((res) => {
-      setCatFact(res.data.fact);
-    });
-  }
-
-  useEffect(() => {
-    fetchCatFact();
-  }, []);
+  const [name, setName] = useState("");
+  const fetchData = () => {
+    Axios.get(`https://api.agify.io/?name=${name}`).then((res) => {
+      console.log(res.data)
+    })
+  };
 
   return (
     <div className="App">
-      <button onClick={fetchCatFact}> Generate Cat fact</button>
-      <p> {catFact} </p>
+      <input
+        placeholder="your name..."
+        onChange={(event) => {
+          setName(event.target.value);
+        }}
+      />
+      <button onClick={fetchData}> Predict Age": </button>
     </div>
-  )
+  );
 }
-
 
 export default App;
