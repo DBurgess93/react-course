@@ -164,9 +164,20 @@
 //   )
 
 
-// <<<<<< fetching >>>>>>
+// <<<<<< Using API's >>>>>>
+// <<<<<< Fetching - simple way >>>>>>>
 // fetch("https://catfact.ninja/fact")
 //   .then((res) => res.json())
 //   .then((data) => {
 //     console.log(data);
 //   })
+
+// <<<<<< Using Axios - not reccomended for latest verison of REACT >>>>>>>
+// <<<<<< Use without Strict Mode to stop loading twice >>>>>>
+// const [catFact, setCatFact] = useState("");
+
+// useEffect(() => {
+//   Axios.get("https://catfact.ninja/fact").then((res) => {
+//     setCatFact(res.data.fact);
+//   });
+// }, []);
