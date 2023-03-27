@@ -10,33 +10,24 @@ import { useEffect, useState } from 'react';
 // import ToggleTextApp from "./ToggleTextApp"
 
 function App() {
-  const [occ, setOcc] = useState("")
   const [excuse, setExcuse] = useState("");
-  const fetchData = () => {
-    Axios.get(`https://excuser-three.vercel.app/v1/excuse/${occ.toLowerCase()}/`).then((res) => {
+  const fetchData = (excuse) => {
+    Axios.get(`https://excuser-three.vercel.app/v1/excuse/${excuse}/`).then((res) => {
     setExcuse(res.data[0].excuse);
-    console.log(res.data[0].excuse);
       });
   };
 
-  useEffect(() => {
-    if (occ !== "") {
-      fetchData();
-    }
-  }, [occ]);
-
-  const handleButtonClick = (event) => {
-    const newOcc = (event.target.textContent);
-    setOcc(newOcc);
+  const handleClick = (event) => {
+    const occ = event.target.textContent.toLowerCase();
+    fetchData(occ);
   };
 
   return (
     <div className="App">
       <h1> Generate an Excuse </h1>
-      <button onClick={handleButtonClick}>Party</button>
-      <button onClick={handleButtonClick}>Family</button>
-      <button onClick={handleButtonClick}>Office</button>
-
+      <button onClick={handleClick}>Party</button>
+      <button onClick={handleClick}>Family</button>
+      <button onClick={handleClick}>Office</button>
       <p> {excuse} </p>
     </div>
   );
