@@ -245,24 +245,46 @@
   //  Static way ---   <button onClick={() => fetchData("party")}>Party</button>
 
 //   const [excuse, setExcuse] = useState("");
-//   const fetchData = (excuse) => {
-//     Axios.get(`https://excuser-three.vercel.app/v1/excuse/${excuse}/`).then((res) => {
-//     setExcuse(res.data[0].excuse);
-//       });
-//   };
+  // const fetchData = (excuse) => {
+  //   Axios.get(`https://excuser-three.vercel.app/v1/excuse/${excuse}/`).then((res) => {
+  //   setExcuse(res.data[0].excuse);
+  //     });
+  // };
 
-//   const handleClick = (event) => {
-//     const occ = event.target.textContent.toLowerCase();
-//     fetchData(occ);
-//   };
+  // const handleClick = (event) => {
+  //   const excuse = event.target.textContent.toLowerCase();
+  //   fetchData(excuse);
+  // };
 
-//   return (
-//     <div className="App">
-//       <h1> Generate an Excuse </h1>
-//       <button onClick={handleClick}>Party</button>
-//       <button onClick={handleClick}>Family</button>
-//       <button onClick={handleClick}>Office</button>
-//       <p> {excuse} </p>
-//     </div>
-//   );
-// }
+  // return (
+  //   <div className="App">
+  //     <h1> Generate an Excuse </h1>
+  //     <button onClick={handleClick}>Party</button>
+  //     <button onClick={handleClick}>Family</button>
+  //     <button onClick={handleClick}>Office</button>
+  //     <p> {excuse} </p>
+  //   </div>
+  // );
+
+
+
+
+import "./App.css";
+import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
+
+function App() {
+  return (
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Router>
+    </div>
+  );
+}
+
+export default App;
