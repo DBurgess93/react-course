@@ -1,6 +1,6 @@
 import './App.css';
 import Axios from "axios";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import { User } from './User';
 // import { useCounter } from './counter';
 // import { useState } from "react";
@@ -10,19 +10,32 @@ import { useState } from 'react';
 // import ToggleTextApp from "./ToggleTextApp"
 
 function App() {
+  const [occ, setOcc] = useState("")
   const [excuse, setExcuse] = useState("");
   const fetchData = () => {
-    Axios.get(`https://excuser-three.vercel.app/v1/excuse/party/`).then((res) => {
+    Axios.get(`https://excuser-three.vercel.app/v1/excuse/${occ.toLowerCase()}/`).then((res) => {
     setExcuse(res.data[0].excuse);
+    console.log(res.data[0].excuse);
       });
+  };
+
+  useEffect(() => {
+    if (occ !== "") {
+      fetchData();
+    }
+  }, [occ]);
+
+  const handleButtonClick = (event) => {
+    const newOcc = (event.target.textContent);
+    setOcc(newOcc);
   };
 
   return (
     <div className="App">
       <h1> Generate an Excuse </h1>
-      <button onClick={fetchData}>Party</button>
-      <button>Family</button>
-      <button>Office</button>
+      <button onClick={handleButtonClick}>Party</button>
+      <button onClick={handleButtonClick}>Family</button>
+      <button onClick={handleButtonClick}>Office</button>
 
       <p> {excuse} </p>
     </div>
