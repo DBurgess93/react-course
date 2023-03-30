@@ -1,4 +1,7 @@
 import React from 'react';
+import { useContext } from "react";
+import { AppContext } from "../App";
 export const Home = (props) => {
-  return <h1>Homepage for: {props.username}</h1>;
-}
+  const { username } = useContext(AppContext);
+  return <h1>Homepage for: {username}</h1>;
+};
