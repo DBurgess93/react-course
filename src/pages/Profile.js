@@ -1,4 +1,10 @@
 import React from 'react';
-export const Profile = () => {
-  return <h1>THIS IS THE PROFILE PAGE</h1>;
-}
+import { ChangeProfile } from "../components/ChangeProfile";
+export const Profile = (props) => {
+  return (
+    <div>
+      Profile for {props.username}
+      <ChangeProfile setUsername={props.setUsername} />
+    </div>
+  );
+};

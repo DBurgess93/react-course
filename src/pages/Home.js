@@ -1,4 +1,4 @@
 import React from 'react';
-export const Home = () => {
-  return <h1>THIS IS THE HOME PAGE</h1>;
+export const Home = (props) => {
+  return <h1>Homepage for: {props.username}</h1>;
 }
