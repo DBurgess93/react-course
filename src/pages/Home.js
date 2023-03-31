@@ -1,7 +1,20 @@
 import React from 'react';
-import { useContext } from "react";
-import { AppContext } from "../App";
+import { useQuery } from "@tanstack/react-query"
+import Axios from "axios";
 export const Home = (props) => {
-  const { username } = useContext(AppContext);
-  return <h1>Homepage for: {username}</h1>;
+  const { data, isLoading, isError } = useQuery(["cat"], () => {
+    return Axios.get("https://catfact.ninja/fact/").then((res) => res.data)
+  });
+
+  if (isError) {
+    return <h1> Sorry, there was an error </h1>
+  }
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+  return (
+    <div>
+      <h1>Homepage <p>{data.fact}</p> </h1>
+    </div>
+  );
 };
