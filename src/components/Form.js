@@ -5,9 +5,9 @@ import * as yup from 'yup';
 
 export const Form = () => {
   const schema = yup.object().shape({
-    fullName: yup.string().required("Full name is required"),
+    fullName: yup.string().required("full name is required"),
     email: yup.string().email().required(),
-    age: yup.number().positive().integer().min(18).required(),
+    age: yup.number().positive().integer().min(18, "Must be 18 or above").required(),
     password: yup.string().min(4).max(20).required(),
     confirmPassword: yup.string().oneOf([yup.ref("password"), null], "Password don't match").required("Must be same as above password"),
   });
