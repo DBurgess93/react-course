@@ -45,6 +45,11 @@ body {
   text-align: center;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

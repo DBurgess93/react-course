@@ -339,3 +339,67 @@
 // };
 
 // export default App;
+
+// <<<<<< Ep 10 - React-Query - how to properly fetch data in react >>>>>>>
+// App.js
+// import React from 'react';
+// import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+// import { Home } from "./pages/Home";
+// import { Profile } from "./pages/Profile";
+// import { Contact } from "./pages/Contact";
+// import { Navbar } from "./Navbar";
+// import { useState } from "react";
+// import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+
+// function App() {
+//   const client = new QueryClient({
+//     defaultOptions: {
+//       queries: {
+//         refetchOnWindowFocus: false,
+//       }
+//     }
+//   });
+//   return (
+//     <div className="App">
+//       <QueryClientProvider client={client}>
+//         <Router>
+//           <Navbar />
+//           <Routes>
+//             <Route path="/" element={<Home />} />
+//             <Route path="/profile" element={<Profile />} />
+//             <Route path="/contact" element={<Contact />} />
+//             <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
+//           </Routes>
+//         </Router>
+//       </QueryClientProvider>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+// home.js
+// import React from 'react';
+// import { useQuery } from "@tanstack/react-query"
+// import Axios from "axios";
+// export const Home = (props) => {
+//   const { data, isLoading, isError, refetch } = useQuery(["cat"], () => {
+//     return Axios.get("https://catfact.ninja/fact/").then((res) => res.data)
+//   });
+
+//   if (isError) {
+//     return <h1> Sorry, there was an error </h1>
+//   }
+//   if (isLoading) {
+//     return <h1>Loading...</h1>
+//   }
+//   return (n
+//     <div>
+//       <h1>Homepage <p>{data.fact}</p> </h1>
+//       <button onClick={refetch}> Update Data </button>
+//     </div>
+//   );
+// };
+
+
+// <<<<<<<<<   >>>>>>>>>>
