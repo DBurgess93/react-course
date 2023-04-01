@@ -5,11 +5,11 @@ import * as yup from 'yup';
 
 export const Form = () => {
   const schema = yup.object().shape({
-    fullName: yup.string().required(),
+    fullName: yup.string().required("Full name is required"),
     email: yup.string().email().required(),
     age: yup.number().positive().integer().min(18).required(),
     password: yup.string().min(4).max(20).required(),
-    confirmPassword: yup.string().oneOf([yup.ref("password"), null]).required(),
+    confirmPassword: yup.string().oneOf([yup.ref("password"), null], "Password don't match").required("Must be same as above password"),
   });
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -24,9 +24,13 @@ export const Form = () => {
       <input type="text" placeholder="Full Name..." {...register("fullName")} />
       <p> {errors.fullName?.message} </p>
       <input type="text" placeholder="Email..." {...register("email")} />
+      <p> {errors.email?.message} </p>
       <input type="number" placeholder="Age..." {...register("age")} />
+      <p> {errors.age?.message} </p>
       <input type="password" placeholder="Password..." {...register("password")} />
+      <p> {errors.password?.message} </p>
       <input type="password" placeholder="Confirm Password..." {...register("confirmPassword")} />
+      <p> {errors.confirmPassword?.message} </p>
       <input type="Submit" />
     </form>
   );
