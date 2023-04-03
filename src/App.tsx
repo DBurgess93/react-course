@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <Person
         name="Daniel"
-        email="dan-burgesss@hotmail.com"
+        email="dan-burgess@hotmail.com"
         age={21}
         isMarried={true}
         friends={["Ray", "Christina", "Willie"]}
